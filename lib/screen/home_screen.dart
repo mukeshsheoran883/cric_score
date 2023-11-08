@@ -12,7 +12,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100,
         backgroundColor: Colors.teal,
         title: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,23 +24,9 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 16,
             ),
-            Row(
-              children: [
-                Text(
-                  'FEATURED',
-                  style: TextStyle(color: Colors.white),
-                ),
-                Spacer(),
-                Text(
-                  'CRICBUZZ PLUS',
-                  style: TextStyle(color: Colors.white),
-                )
-              ],
-            ),
           ],
         ),
       ),
-
     );
   }
 }
