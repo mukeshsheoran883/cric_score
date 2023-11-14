@@ -1,7 +1,7 @@
 class Score {
   int? r;
   int? w;
-  double? o;
+  num? o;
   String? inning;
 
   Score({this.r, this.w, this.o, this.inning});
