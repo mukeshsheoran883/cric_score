@@ -1,25 +1,40 @@
-import 'package:cric_score/model/cricket_match.dart';
+import 'package:cric_score/model/Info_scor.dart';
+import 'package:cric_score/model/data%20info.dart';
 
-class CricketResponse {
-  final String apiKey;
-  final List<CricketMatch> data;
+class MatchResponse {
+  String? apikey;
+  List<Data>? data;
+  String? status;
+  Info? info;
 
-  CricketResponse({
-    required this.apiKey,
-    required this.data,
-  });
+  MatchResponse({this.apikey, this.data, this.status, this.info});
 
-  factory CricketResponse.fromJson(Map<String, dynamic> json) {
-    final List<dynamic> jsonData = json['data'];
-    final List<CricketMatch> cricketMatches =
-    jsonData.map((matchData) => CricketMatch.fromJson(matchData)).toList();
+  MatchResponse.fromJson(Map<String, dynamic> json) {
+    apikey = json['apikey'];
+    if (json['data'] != null) {
+      data = <Data>[];
+      json['data'].forEach((v) {
+        data!.add(new Data.fromJson(v));
+      });
+    }
+    status = json['status'];
+    info = json['info'] != null ? new Info.fromJson(json['info']) : null;
+  }
 
-    return CricketResponse(
-      apiKey: json['apiKey'],
-      data: cricketMatches,
-    );
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['apikey'] = this.apikey;
+    if (this.data != null) {
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
+    }
+    data['status'] = this.status;
+    if (this.info != null) {
+      data['info'] = this.info!.toJson();
+    }
+    return data;
   }
 }
+
 
 
 
